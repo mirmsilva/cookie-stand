@@ -52,14 +52,14 @@ function makeLocationArticle(location){
   h2Elem.textContent = location.name;
   articleElem.appendChild(h2Elem);
 
-  
+  location.customerSales();
 
   const ulElem = document.createElement('ul');
   articleElem.appendChild(ulElem);
 
   for (let i = 0; i< hoursArray.length; i++){
     const liElem = document.createElement('li');
-    liElem.textContent = hoursArray[i] + hoursArrayTwo[i];
+    liElem.textContent = hoursArray[i] + location.customerSales[i];
     ulElem.appendChild(liElem);
    }
 }
