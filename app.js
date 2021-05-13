@@ -39,6 +39,9 @@ storeLima.setSales();
 
 let storeArray = [storeSeattle, storeTokyo,storeDubai, storeParis, storeLima]; 
 
+//sum total per location
+
+
 
 //Display Table
 const storeDiv = document.getElementById ('locationSales');
