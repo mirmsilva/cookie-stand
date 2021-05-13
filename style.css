@@ -59,3 +59,7 @@ li{
   list-style-type: none;
   text-align: center;
 }
+
+table{
+  border: 2px black solid;
+}

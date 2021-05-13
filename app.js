@@ -39,9 +39,21 @@ storeLima.setSales();
 
 let storeArray = [storeSeattle, storeTokyo,storeDubai, storeParis, storeLima]; 
 
-//sum total per location
+//callback function 
+function handleSubmit(event){
+  event.preventDefault();
+  let location = event.target.location.value;
+  let custMin = event.target.custMin.photo.value;
+  let custMax = event.target.custMax.interests.value;
+  let custAvg = event.target.custMax.value;
 
+  let newStore = new Store (location, custMin, custMax, custAvg);
+  storeArray.push(newStore);
+  newStore.setSales();
+  newStore.render();
+  event.target.reset();
 
+}
 
 //Display Table
 const storeDiv = document.getElementById ('locationSales');
@@ -76,6 +88,23 @@ function makeTable(){
       trElem.appendChild(tdElem);
     }
   }
+  //footer
+  let hourlyTotal = document.createElement('th')
+  hourlyTotal.textContent='Hourly Sales';
+  table.appendChild(hourlyTotal);
 
+  for(let i=0; i< hoursArray.length; i++){
+    const thElem = document.createElement('th');
+    thElem.textContent = hoursArray[i];
+    table.appendChild(thElem);
+  }
 }
+
+//target
+const formElem = document.getElementById("addLocationForm");
+
+//listner
+formElem.addEventListener('submit',handleSubmit);
+
+
 makeTable();
