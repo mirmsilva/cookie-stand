@@ -51,20 +51,31 @@ storeDiv.appendChild(table);
 
 //Table
 function makeTable(){
+  //header
+  let storeHours = document.createElement('th')
+  storeHours.textContent = 'Hours';
+  table.appendChild(storeHours);
 
-    for(let i= 0; i < storeArray.length; i++){
-      const trElem = document.createElement('tr');
-      table.appendChild(trElem)
+  for(let i=0; i< hoursArray.length; i++){
+    const thElem = document.createElement('th');
+    thElem.textContent = hoursArray[i];
+    table.appendChild(thElem);
+  }
+  //body
+  for(let i= 0; i < storeArray.length; i++){
+    const trElem = document.createElement('tr');
+    table.appendChild(trElem);
     
-      let storeLocation = document.createElement ('th')
-        storeLocation.textContent = storeArray[i].location;
-        trElem.appendChild(storeLocation);
+    let storeLocation = document.createElement ('th')
+    storeLocation.textContent = storeArray[i].location;
+      trElem.appendChild(storeLocation);
 
-      for(let j=0; j< storeArray[i].hoursArr.length; j++){
+    for(let j=0; j< storeArray[i].hoursArr.length; j++){
       const tdElem = document.createElement('td');
-       tdElem.textContent = storeArray[i].hoursArr[j];
-       trElem.appendChild(tdElem);
+      tdElem.textContent = storeArray[i].hoursArr[j];
+      trElem.appendChild(tdElem);
     }
   }
+
 }
 makeTable();
