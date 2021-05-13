@@ -111,7 +111,7 @@ function makeTable(){
   hourlyTotal.textContent='Hourly Sales';
   table.appendChild(hourlyTotal);
   let sum = 0;
-  for( let i = 0; i< hoursArray.length; i++){
+  for( let i = 0; i< hoursArray.length - 1; i++){
     for (let j=0; j< storeArray.length; j++){
       sum = sum + storeArray[j].hoursArr[i];
     }
