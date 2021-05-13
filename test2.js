@@ -1,6 +1,6 @@
 'use strict'
 //hours of operation/sales
-let hoursArray = ['6am ','7am ', '8am ', '9am ','10am ', '11am ', '12pm ','1pm ','2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm ', '8pm '];
+let hoursArray = ['6am ','7am ', '8am ', '9am ','10am ', '11am ', '12pm ','1pm ','2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm '];
 
 //constructor function
 function Store (location, custMin, custMax, custAvg){
@@ -10,91 +10,58 @@ function Store (location, custMin, custMax, custAvg){
   this.custAvg = custAvg;
   this.hoursArr = [];
 }
+//protype function
 Store.prototype.setSales= function(){
-  //console.log(this.sales);
   for( let i = 0; i< hoursArray.length; i++){
     this.hoursArr.push(randomSales(this.custMin, this.custMax, this.custAvg));
   }
   console.log(this.hoursArr);
 }
 function randomSales(custMin, custMax, custAvg) {
-  return Math.floor(Math.random() * ((custMax - custMin) + custMin)*custAvg);
+  return Math.floor(custAvg*(Math.random() * (custMax - custMin) + custMin));
 }
 
-//location
-let storeSeattle = new Store('seattle', '23','65','6.3');
+//locations
+let storeSeattle = new Store('seattle', 23,65,6.3);
 storeSeattle.setSales();
-console.log(storeSeattle);
+
+let storeTokyo = new Store('tokyo', 3,24,1.2);
+storeTokyo.setSales();
+
+let storeDubai = new Store('dubai', 11,38,3.7);
+storeDubai.setSales();
+
+let storeParis = new Store('paris', 20,38,2.3);
+storeParis.setSales();
+
+let storeLima = new Store('lima', 2,16,4.6);
+storeLima.setSales();
+
+let storeArray = [storeSeattle, storeTokyo,storeDubai, storeParis, storeLima]; 
 
 
-//Display - elements & table
+//Display Table
+const storeDiv = document.getElementById ('locationSales');
 
-//Display
-const storeDivElem = document.getElementById ('locationSales');
+const table = document.createElement('table');
+storeDiv.appendChild(table);
 
-function makeLocationArticle(store){
-  let location = store.location;
-  const articleElem = document.createElement('article');
-  articleElem.setAttribute('id',location);
-  storeDivElem.appendChild(articleElem);
-
-  const h2Elem = document.createElement ('h2');
-  h2Elem.textContent = store.location;
-  articleElem.appendChild(h2Elem);
-
-
-  const ulElem = document.createElement('ul');
-  articleElem.appendChild(ulElem);
-
-  for (let i = 0; i< hoursArray.length; i++){ 
-      const liElem = document.createElement('li');
-      liElem.textContent = store.hoursArr[i];
-      ulElem.appendChild(liElem);
-  }
-}
 //Table
-function addTable(store) {
+function makeTable(){
 
-  let location = store.location;
-  const articleElem = document.getElementById(location);
+    for(let i= 0; i < storeArray.length; i++){
+      const trElem = document.createElement('tr');
+      table.appendChild(trElem)
+    
+      let storeLocation = document.createElement ('th')
+        storeLocation.textContent = storeArray[i].location;
+        trElem.appendChild(storeLocation);
 
-  const tableElem = document.createElement('table');
-  articleElem.appendChild(tableElem);
-
-  const trElem = document.createElement('tr');
-  tableElem.appendChild(trElem);
-
-  const tr2Elem = document.createElement('tr');
-  tableElem.appendChild(tr2Elem);
-
-  let th1Elem = document.createElement('th');
-  th1Elem.textContent = 'storeSeattle'
-  trElem.appendChild(th1Elem);
-
-  for (let i = 0; i< hoursArray.length; i++){ 
-    const td1Elem = document.createElement('td');
-    td1Elem.textContent = hoursArray[i];
-    trElem.appendChild(td1Elem);
+      for(let j=0; j< storeArray[i].hoursArr.length; j++){
+      const tdElem = document.createElement('td');
+       tdElem.textContent = storeArray[i].hoursArr[j];
+       trElem.appendChild(tdElem);
+    }
   }
-  // let th2Elem = document.createElement('th');
-  // th2Elem.textContent = 'Dogs'
-  // trElem.appendChild(th2Elem);
-
-  // let td2Elem = document.createElement('td');
-  // td2Elem.textContent = kitten.isGoodWithDogs;
-  // tr2Elem.appendChild(td2Elem);
-
-  // let th3Elem = document.createElement('th');
-  // th3Elem.textContent = 'Cats'
-  // trElem.appendChild(th3Elem);
-
-  // let td3Elem = document.createElement('td');
-  // td3Elem.textContent = kitten.isGoodWithOtherCats;
-  // tr2Elem.appendChild(td3Elem);
-
 }
-
-
-
-makeLocationArticle(storeSeattle);
-addTable(storeSeattle);
+makeTable();

@@ -1,6 +1,38 @@
 body{
   background-color: blanchedalmond;
 }
-header,nav{
+header, footer{
+  border: 2px saddlebrown solid;
   text-align: center;
+  margin: 10px;
+}
+
+.one, .two{
+  border: 2px saddlebrown solid;
+  text-align: center;
+  margin: 10px;
+  padding:5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+#sales, #cookie, #order{
+  border: 2px saddlebrown solid;
+  text-align: center;
+  margin: 10px;
+  padding:5px;
+  width:200px;
+  align-items: center;
+}
+
+#hours, #private{
+  border: 2px saddlebrown solid;
+  text-align: center;
+  margin: 10px;
+  padding:5px;
+  width:200px;
+  align-items: center;
+}
+li{
+  list-style-type: none;
 }
