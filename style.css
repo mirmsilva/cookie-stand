@@ -1,5 +1,8 @@
 body{
-  background-color:blanchedalmond;
+  background-color:rgb(243, 199, 145);
+  background-image: url("https://github.com/codefellows/seattle-code-201d75/blob/main/class-08/salmon%20assets/assets/salmon.png?raw=true/200x200");
+  background-size: 300px 200px;
+  padding: 20px;
 }
 header, footer{
   border: 3px rgb(92, 46, 13) solid;
@@ -20,7 +23,7 @@ header, footer{
 }
 
 .one, .two{
-  border: ;
+  background-color: ;
   text-align: center;
   margin: 10px;
   padding:5px;
@@ -30,7 +33,7 @@ header, footer{
 }
 #sales, #cookie, #order{
   border: 2px royalblue solid;
-  background-color: rgb(243, 199, 145);
+  background-color: blanchedalmond;
   border-radius: 10%;
   text-align: center;
   margin: 10px;
@@ -42,7 +45,7 @@ header, footer{
 
 #hours, #private{
   border: 2px royalblue solid;
-  background-color: rgb(243, 199, 145);
+  background-color: blanchedalmond;
   border-radius: 20%;
   text-align: center;
   margin: 10px;
