@@ -68,7 +68,7 @@ Store.prototype.render = function(){
       sum = sum + storeArray[j].hoursArr[i];
     }
     const thElem = document.createElement('th');
-    thElem.textContent = sum;
+    thElem.textContent = sum - hoursArr[i];
     table.appendChild(thElem);
      sum = 0
     }

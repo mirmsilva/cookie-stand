@@ -1,6 +1,11 @@
 'use strict'
-//hours of operation/sales
-let hoursArray = ['6am ','7am ', '8am ', '9am ','10am ', '11am ', '12pm ','1pm ','2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm '];
+//global
+let storeArray = [];
+let hoursArray = ['6am ','7am ', '8am ', '9am ','10am ', '11am ', '12pm ','1pm ','2pm ', '3pm ', '4pm ', '5pm ', '6pm ', '7pm ','Total']; 
+const storeDiv = document.getElementById ('locationSales');
+const formElem = document.getElementById("addLocationForm");
+const table = document.createElement('table');
+storeDiv.appendChild(table);
 
 //constructor function
 function Store (location, custMin, custMax, custAvg){
@@ -9,48 +14,25 @@ function Store (location, custMin, custMax, custAvg){
   this.custMax = custMax;
   this.custAvg = custAvg;
   this.hoursArr = [];
+  
+  storeArray.push(this);
 }
-//protype function
+
+//protype functions
 Store.prototype.setSales= function(){
-  for( let i = 0; i< hoursArray.length; i++){
-    this.hoursArr.push(randomSales(this.custMin, this.custMax, this.custAvg));
+  let sum = 0
+  for( let i = 0; i< hoursArray.length - 1; i++){
+    let randomSale = randomSales(this.custMin, this.custMax, this.custAvg);
+    sum += randomSale 
+    this.hoursArr.push(randomSale);
   }
+  this.hoursArr.push(sum);
   console.log(this.hoursArr);
-}
-function randomSales(custMin, custMax, custAvg) {
-  return Math.floor(custAvg*(Math.random() * (custMax - custMin) + custMin));
+  
 }
 
-//locations
-let storeSeattle = new Store('seattle', 23,65,6.3);
-storeSeattle.setSales();
 
-let storeTokyo = new Store('tokyo', 3,24,1.2);
-storeTokyo.setSales();
-
-let storeDubai = new Store('dubai', 11,38,3.7);
-storeDubai.setSales();
-
-let storeParis = new Store('paris', 20,38,2.3);
-storeParis.setSales();
-
-let storeLima = new Store('lima', 2,16,4.6);
-storeLima.setSales();
-
-let storeArray = [storeSeattle, storeTokyo,storeDubai, storeParis, storeLima]; 
-
-//sum total per location
-
-
-
-//Display Table
-const storeDiv = document.getElementById ('locationSales');
-
-const table = document.createElement('table');
-storeDiv.appendChild(table);
-
-//Table
-function makeTable(){
+Store.prototype.render = function(){
   //header
   let storeHours = document.createElement('th')
   storeHours.textContent = 'Hours';
@@ -76,6 +58,76 @@ function makeTable(){
       trElem.appendChild(tdElem);
     }
   }
+  //footer
+  let hourlyTotal = document.createElement('th')
+  hourlyTotal.textContent='Hourly Sales';
+  table.appendChild(hourlyTotal);
+  let sum = 0;
+  for( let i = 0; i< hoursArray.length; i++){
+    for (let j=0; j< storeArray.length; j++){
+      sum = sum + storeArray[j].hoursArr[i];
+    }
+    const thElem = document.createElement('th');
+    thElem.textContent = sum;
+    table.appendChild(thElem);
+     sum = 0
+    }
+  }
 
+//functions
+function randomSales(custMin, custMax, custAvg) {
+  return Math.floor(custAvg*(Math.random() * (custMax - custMin) + custMin));
 }
-makeTable();
+  
+function dailySales(){
+    let sum = 0;
+    for (let i = 0; i< storeArray.length; i++){
+      for (let j=0; j< hoursArray.length-1; j++){
+        sum = sum + hoursArr[j].storeArr[1];
+    }
+  }
+}
+  
+//callback function 
+function handleSubmit(event){
+  event.preventDefault();
+  console.log(event.target);
+  let location = event.target.location.value;
+  let custMin = parseInt(event.target.custMin.value);
+  let custMax = parseInt(event.target.custMax.value);
+  let custAvg = parseInt(event.target.custAvg.value);
+  
+  let newStore = new Store(location, custMin, custMax, custAvg);
+  newStore.setSales();
+  
+  renderAllStores();
+
+  event.target.reset();
+  }
+
+function renderAllStores(){
+  for (let i=0; i< storeArray.length; i++){
+    storeArray[i].render();
+  }
+}
+//listner
+formElem.addEventListener('submit', handleSubmit)
+
+//locations
+let storeSeattle = new Store('seattle', 23,65,6.3);
+storeSeattle.setSales();
+
+let storeTokyo = new Store('tokyo', 3,24,1.2);
+storeTokyo.setSales();
+
+let storeDubai = new Store('dubai', 11,38,3.7);
+storeDubai.setSales();
+
+let storeParis = new Store('paris', 20,38,2.3);
+storeParis.setSales();
+
+let storeLima = new Store('lima', 2,16,4.6);
+storeLima.setSales();
+
+//call function
+renderAllStores();
