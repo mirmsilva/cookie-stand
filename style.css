@@ -1,30 +1,24 @@
 body{
-  background-color:rgb(243, 199, 145);
-  background-image: url("https://github.com/codefellows/seattle-code-201d75/blob/main/class-08/salmon%20assets/assets/salmon.png?raw=true/200x200");
-  background-size: 300px 200px;
-  padding: 20px;
+  background-color: rgba(223, 119, 35, 0.781);
+  
+  margin: 20px;
 }
-header, footer{
-  border: 3px rgb(92, 46, 13) solid;
-  background-color: royalblue;
+header{
+  background-image:url("../img/cookie shop banner.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: maroon px solid;
   text-align: center;
+  width: 95%%;
+  height: 300px;
   padding: 10px;
   margin: 10px;
 }
-.about{
-  border: 3px darkblue solid;
-  background-color: rosybrown;
-  text-align: center;
-  margin: 10px;
-  padding:5px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .one, .two{
-  background-color: ;
   text-align: center;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2em;
   margin: 10px;
   padding:5px;
   display:flex;
@@ -32,27 +26,39 @@ header, footer{
   align-items: center;
 }
 #sales, #cookie, #order{
-  border: 2px royalblue solid;
-  background-color: blanchedalmond;
+  border: 5px maroon solid;
+  background-color:  rgb(238, 224, 203);
   border-radius: 10%;
   text-align: center;
   margin: 10px;
   padding:10px;
-  width:200px;
-  height: 275px;
+  width:31%;
+  height: 300px;
   align-items: center;
 }
 
-#hours, #private{
-  border: 2px royalblue solid;
-  background-color: blanchedalmond;
-  border-radius: 20%;
+#about, #hours, #private{
+  border: 5px maroon solid;
+  background-color: rgb(238, 224, 203);
+  border-radius: 10%;
   text-align: center;
   margin: 10px;
   padding:15px;
-  width:300px;
-  height:300px;
+  width:31%;
+  height:310px;
   align-items: center;
+}
+table{
+  background-color: rgb(238, 224, 203);
+  margin: 30px;
+  padding: 15px;
+}
+form{
+  background-color:  rgb(238, 224, 203);
+  font-family: 'Barlow', sans-serif;
+  margin: 30px;
+  padding: 15px;
+  border: 2px rgb(92, 46, 13) solid;
 }
 ul{
   text-align: center;
@@ -61,8 +67,22 @@ ul{
 li{
   list-style-type: none;
   text-align: center;
+  font-family: 'Barlow', sans-serif;
+
 }
 
 table{
   border: 2px black solid;
+  font-family: 'Barlow', sans-serif;
+}
+footer{
+  border: 5px rgb(92, 46, 13) solid;
+  background-color:rgb(238, 224, 203);
+  font-family: 'Barlow', sans-serif;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+
+p{
+ 
 }
