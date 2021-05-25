@@ -70,7 +70,7 @@ Store.prototype.render = function(){
     const thElem = document.createElement('th');
     thElem.textContent = sum - hoursArr[i];
     table.appendChild(thElem);
-     sum = 0
+    sum = 0
     }
   }
 
